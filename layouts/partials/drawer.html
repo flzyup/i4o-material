@@ -1,0 +1,33 @@
+<aside class="mdc-drawer mdc-drawer--modal fortnightly-navigation">
+  <div class="mdc-drawer__content">
+    <div class="mdc-drawer__header">
+      <button class="mdc-icon-button material-icons drawer-close-icon">
+        close
+      </button>
+      <span class="mdc-top-app-bar__title">{{ .Site.Params.Title }}</span>
+    </div>
+    <nav class="mdc-list">
+      {{ range .Site.Menus.main }}
+      <a class="mdc-list-item" href="{{ .URL }}">
+        {{ if .Pre }}
+        {{ $icon := printf "<i data-feather=\"%s\"></i> " .Pre | safeHTML }}
+        {{ $icon }}
+        {{ end }}
+        <span class="mdc-list-item__text">{{ .Name }}</span>
+        {{/*  {{ $text := print .Name | safeHTML }}
+        {{ $text }}  */}}
+      </a>
+      {{ end }}
+      {{/*  <a
+        class="mdc-list-item mdc-list-item--activated"
+        href="#"
+        aria-current="page"
+      >
+        <span class="mdc-list-item__text">Front Page</span>
+      </a>
+      <a class="mdc-list-item" href="#">
+        <span class="mdc-list-item__text">World</span>
+      </a>  */}}
+    </nav>
+  </div>
+</aside>

@@ -1,0 +1,46 @@
+{{ define "main" }}
+    <div class="post animated fadeInDown">
+        <div class="post-content">
+
+            <div class="post-title">
+                <h3>{{ .Title }}</h3>
+                {{ if eq .Type "posts"}}
+                    <div class="info">
+                        <em class="far fa-calendar-alt"></em>
+                        <span class="date">{{ .Date.Format .Site.Params.anatole.dateFormatFull }}</span>
+                        <em class="far fa-clock"></em>
+                        <span class="reading-time">{{ i18n "reading_time" .ReadingTime }}</span>
+                    </div>
+                {{ end }}
+            </div>
+
+            {{ .Content }}
+            
+        </div>
+        <div class="post-footer">
+            <div class="info">
+                {{ with .Page.Params.Categories }}{{ partial "taxonomy/categories.html" . }}{{ end }}
+                {{ with .Page.Params.Tags }}{{ partial "taxonomy/tags.html" . }}{{ end }}
+            </div>
+        </div>
+
+        {{ if eq .Type "posts"}}
+            {{ if .Site.DisqusShortname -}}
+                <div id="fb_comments_container">
+                    <h2>{{ i18n "comments" }}</h2>
+                    {{ template "_internal/disqus.html" . }}
+                </div>
+            {{- end }}
+            {{- if eq .Site.Params.utteranc.enable true -}}
+                <div id="utter-container"></div>
+                <script src="https://utteranc.es/client.js"
+                    repo= '{{ .Site.Params.utteranc.repo }}'
+                    issue-term= "{{ .Site.Params.utteranc.issueTerm }}"
+                    theme= '{{ .Site.Params.utteranc.theme }}'
+                    crossorigin= "anonymous"
+                    async>
+                </script> 
+            {{- end }}
+        {{ end }}
+    </div>
+{{ end }}
