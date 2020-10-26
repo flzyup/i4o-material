@@ -7,10 +7,12 @@
       <span class="mdc-top-app-bar__title">{{ .Site.Params.Title }}</span>
     </div>
     <nav class="mdc-list">
+      {{ $url := .RelPermalink }}
       {{ range .Site.Menus.main }}
-      <a class="mdc-list-item" href="{{ .URL }}">
+      {{ $active := eq $url .URL }}
+      <a {{if $active }}class="mdc-list-item mdc-list-item--activated"{{else}}class="mdc-list-item"{{end}} href="{{ .URL }}">
         {{ if .Pre }}
-        {{ $icon := printf "<i data-feather=\"%s\"></i> " .Pre | safeHTML }}
+        {{ $icon := printf "<i class=\"material-icons-outlined md-24\">%s</i>" .Pre | safeHTML }}
         {{ $icon }}
         {{ end }}
         <span class="mdc-list-item__text">{{ .Name }}</span>

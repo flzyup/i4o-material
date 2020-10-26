@@ -2,36 +2,54 @@
 
 {{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
 {{ range $paginator.Pages }}
-<div class="post animated fadeInDown">
-    <div class="post-title">
-        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a>
-        </h3>
-    </div>
-    <div class="post-content">
-        <div class="p_part">
-            <p>{{ .Summary }}</p>
-        </div>
-
-        <div class="p_part">
-            <p></p>
-        </div>
-    </div>
-    <div class="post-footer">
-        <div class="meta">
-            <div class="info"><em class="far fa-calendar-alt"></em><span
+<div class="mdc-card element-card">
+    <div class="mdc-card__media mdc-theme--background">
+        <div class="">
+            <h1 class="mdc-typography--headline4 mdc-theme--text-primary-on-background"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
+            <h2 class="mdc-typography--headline6 mdc-theme--text-secondary-on-background">
+                <em class="far fa-calendar-alt"></em><span
                     class="date">{{ .Date.Format .Site.Params.anatole.dateFormatWeek }}</span>
                 {{ with .Params.tags }}
                 {{- range $index, $el := . -}}
                 <a class="tag" href="{{ ( printf "tags/%s/" ( . | urlize ) ) | relLangURL }}">{{ . }}</a>
                 {{- end -}}
                 {{ end }}
-            </div>
+            </h2>
         </div>
+        <!-- p -->
+        <p class="mdc-theme--text-primary-on-background">{{ .Summary }}</p>
     </div>
+    
+
+
+    {{/*  <div class="post-title">
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </h3>
+</div>
+<div class="meta">
+    <div class="info"><em class="far fa-calendar-alt"></em><span
+            class="date">{{ .Date.Format .Site.Params.anatole.dateFormatWeek }}</span>
+        {{ with .Params.tags }}
+        {{- range $index, $el := . -}}
+        <a class="tag" href="{{ ( printf "tags/%s/" ( . | urlize ) ) | relLangURL }}">{{ . }}</a>
+        {{- end -}}
+        {{ end }}
+    </div>
+</div> */}}
+
+{{/*  <div class="post-content">
+        <div class="p_part">
+            <p>{{ .Summary }}</p>
+</div>
+
+<div class="p_part">
+    <p></p>
+</div>
+</div> */}}
 </div>
 {{ end }}
 <div class="pagination">
-    {{/*  {{- partial "pagination.html" . -}} */}}
-    {{ template "_internal/pagination.html" . }}
+    {{- partial "pagination.html" . -}}
+    {{/*  {{ template "_internal/pagination.html" . }} */}}
 </div>
 {{ end }}

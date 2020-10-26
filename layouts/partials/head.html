@@ -48,6 +48,12 @@
   {{ end -}}
 
   <!-- JavaScript -->
+  {{ $anatole := resources.Get "js/i4o.js" }}
+  {{ $secureJS := $anatole |  resources.Minify | resources.Fingerprint }}
+  <script type="text/javascript"
+          src="{{ $secureJS.Permalink }}"
+          integrity="{{ $secureJS.Data.Integrity }}"
+          crossorigin="anonymous"></script>
 
   {{- $js := "" -}}
   {{- range .Site.Params.customJs -}}

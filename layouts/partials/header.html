@@ -4,15 +4,28 @@
     <div class="mdc-top-app-bar__row">
       <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
         <a class="material-icons mdc-top-app-bar__navigation-icon">menu</a>
-        <span class="mdc-top-app-bar__title">{{ .Site.Params.Title }} - {{ .Site.Params.description }}</span>
+        <span class="mdc-top-app-bar__title">
+          {{ $url := .RelPermalink }}
+          {{ $isRoot := eq $url "/" }}
+          {{ if $isRoot }}
+            {{ .Site.Params.Title }} - {{ .Site.Params.description }}
+          {{ else }}
+            {{ range .Site.Menus.main }}
+              {{ if eq $url .URL }}
+                {{ .Name }}
+              {{ end }}
+            {{ end }}
+          {{ end }}
+        </span>
       </section>
       <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-        <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Bookmark this page">
-          search
+        <button id="switch-theme" class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Set theme">
+          adjust
         </button>
       </section>
     </div>
   </header>
-  <main id="main-content" class="main-content"> <!-- #main-content -->
+  <main> <!-- #main-content -->
     <div class="mdc-top-app-bar--fixed-adjust"> <!-- mdc-top-app-bar--fixed-adjust -->
+      <div class="main-content">
     
