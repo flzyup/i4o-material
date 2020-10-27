@@ -1,18 +1,12 @@
 {{ define "main" }}
-    <div class="archive animated fadeInDown">
-        <ul class="list-with-title">
-            {{ range .Data.Pages.GroupByDate "2006" }}
-                <div class="listing-title">{{ .Key }}</div>
-                {{ range .Pages }}
-                    <ul class="listing">
-                        <div class="listing-item">
-                            <div class="listing-post"><a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a>
-                                <div class="post-time"><span class="date">{{.Date.Format .Site.Params.anatole.dateFormatShort }}</span></div>
-                            </div>
-                        </div>
-                    </ul>
-                {{ end }}
-            {{ end }}
-        </ul>
-    </div>
+<div class="archive">
+    {{ $url := .RelPermalink }}
+    {{ if eq $url "/tags/" }}
+        {{ partial "tags.html" . }}
+    {{ else if (eq $url "/categories/") }}
+        {{ partial "categories.html" . }}
+    {{ else }}
+        {{ partial "list-by-year.html" . }}
+    {{ end }}
+</div>
 {{ end }}

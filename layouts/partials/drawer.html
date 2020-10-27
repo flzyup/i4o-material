@@ -4,7 +4,14 @@
       <button class="mdc-icon-button material-icons drawer-close-icon">
         close
       </button>
-      <span class="mdc-top-app-bar__title">{{ .Site.Params.Title }}</span>
+      {{/*  <span class="mdc-top-app-bar__title">{{ .Site.Params.Title }}</span>  */}}
+    </div>
+    <div class="profile">
+      <img src="{{ .Site.Params.profilePicture | absURL }}" alt="profile picture">
+      <h4><a href="/">{{ .Site.Params.author }}</a></h4>
+      <div class="description">
+          <p>{{ .Site.Params.description }}</p>
+      </div>
     </div>
     <nav class="mdc-list">
       {{ $url := .RelPermalink }}
@@ -16,20 +23,13 @@
         {{ $icon }}
         {{ end }}
         <span class="mdc-list-item__text">{{ .Name }}</span>
-        {{/*  {{ $text := print .Name | safeHTML }}
-        {{ $text }}  */}}
       </a>
       {{ end }}
-      {{/*  <a
-        class="mdc-list-item mdc-list-item--activated"
-        href="#"
-        aria-current="page"
-      >
-        <span class="mdc-list-item__text">Front Page</span>
-      </a>
-      <a class="mdc-list-item" href="#">
-        <span class="mdc-list-item__text">World</span>
-      </a>  */}}
     </nav>
+    <div class="copyright">
+      <div class="author">&copy; {{ if .Site.Params.since -}} {{ .Site.Params.since }}-{{- end }}{{ now.Format "2006"}} 
+          <a href="{{ .Site.BaseURL }}">{{ .Site.Params.title }}</a>
+      </div>
+    </div>
   </div>
 </aside>

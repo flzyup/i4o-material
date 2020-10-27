@@ -42,8 +42,9 @@ html[data-theme='dark'] {
   --mdc-theme-primary: #0288D1;
 
   --mdc-theme-background: #212121;
-  --mdc-theme-surface: #757575;
+  --mdc-theme-surface: #555;
 
+  --mdc-theme-on-surface: #eee;
   --mdc-theme-text-primary-on-background: #fff;
   --mdc-theme-text-secondary-on-background: #eee;
   --mdc-theme-text-hint-on-background: #eee;
@@ -139,6 +140,24 @@ pre {
   align-items: center;
 }
 
+.profile {
+  text-align: center;
+}
+.profile img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.38);
+}
+
+.copyright {
+  position: absolute;
+  bottom: 25px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .mdc-list-item i {
   margin-right: 8px;
 }
@@ -173,6 +192,10 @@ pre {
   text-align: right;
 }
 
+.post-footer .info {
+  text-align: right;
+}
+
 .tag::before {
   content: "#";
   opacity: .5;
@@ -193,6 +216,21 @@ pre {
   margin: 5px 8px 5px 0;
 }
 
+.listing-item {
+  display: flex;
+  flex-direction: row;
+}
+
+.listing-item .item-title {
+  flex-grow: 1;
+}
+
+.mdc-chip {
+  background-color: var(--mdc-theme-surface);
+  color: var(--mdc-theme-on-surface);
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0,0,0,.12);
+}
+
 .pagination {
   list-style-type: none;
   margin-block: 0;
@@ -207,7 +245,7 @@ pre {
 }
 
 .pagination .page-item.disabled {
-  color: #999;
+  color: #ccc;
 }
 
 .pagination .page-item.active {

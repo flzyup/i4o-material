@@ -1,0 +1,17 @@
+<ul class="list-with-title">
+  {{ range .Data.Pages.GroupByDate "2006" }}
+  <div class="mdc-card mdc-card__media">
+      <div class="mdc-typography--headline6 mdc-theme--text-primary-on-background">{{ .Key }}</div>
+      {{ range .Pages }}
+      <ul class="listing mdc-typography--subtitle1 mdc-theme--text-secondary-on-background">
+          <div class="listing-item">
+              <a class="item-title" href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a>
+              <div class="post-time">
+                  <span class="date">{{.Date.Format .Site.Params.i4o.dateFormatDay }}</span>
+              </div>
+          </div>
+      </ul>
+      {{ end }}
+  </div>
+  {{ end }}
+</ul>

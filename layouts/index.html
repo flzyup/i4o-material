@@ -8,7 +8,7 @@
             <h1 class="mdc-typography--headline5 mdc-theme--text-primary-on-background title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
             <div class="mdc-typography--subtitle2 mdc-theme--text-secondary-on-background subtitle">
                 <span class="material-icons subtitle-icon">date_range</span>
-                <span class="date">{{ .Date.Format .Site.Params.anatole.dateFormatWeek }}</span>
+                <span class="date">{{ .Date.Format .Site.Params.i4o.dateFormatWeek }}</span>
             </div>
         </div>
         <!-- p -->
@@ -27,37 +27,9 @@
             {{ end }}
         </div>
     </div>
-    
-
-
-    {{/*  <div class="post-title">
-        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a>
-    </h3>
-</div>
-<div class="meta">
-    <div class="info"><em class="far fa-calendar-alt"></em><span
-            class="date">{{ .Date.Format .Site.Params.anatole.dateFormatWeek }}</span>
-        {{ with .Params.tags }}
-        {{- range $index, $el := . -}}
-        <a class="tag" href="{{ ( printf "tags/%s/" ( . | urlize ) ) | relLangURL }}">{{ . }}</a>
-        {{- end -}}
-        {{ end }}
-    </div>
-</div> */}}
-
-{{/*  <div class="post-content">
-        <div class="p_part">
-            <p>{{ .Summary }}</p>
-</div>
-
-<div class="p_part">
-    <p></p>
-</div>
-</div> */}}
 </div>
 {{ end }}
 <div>
     {{- partial "pagination.html" . -}}
-    {{/*  {{ template "_internal/pagination.html" . }} */}}
 </div>
 {{ end }}

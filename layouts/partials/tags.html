@@ -1,0 +1,14 @@
+<div class="mdc-chip-set" role="grid">
+  {{ range sort .Site.Taxonomies.tags "Count" "desc" }}
+  <a href="{{ .Page.Permalink }}">
+    <div class="mdc-chip" role="row">
+      <div class="mdc-chip__ripple"></div>
+      <span role="gridcell">
+        <span role="button" tabindex="0" class="mdc-chip__primary-action">
+          <span class="mdc-chip__text">{{ .Page.Title }} ({{ .Count }})</span>
+        </span>
+      </span>
+    </div>
+  </a>
+  {{ end }}
+</div>

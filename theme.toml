@@ -8,7 +8,7 @@ description = "A Google material design style theme"
 homepage = "https://github.com/flzyup/i4o-material"
 tags = ["blog", "responsive", "clean", "minimalist", "minimal", "personal", "dark"]
 features = ["blog", "seo", "responsive", "mobile", "material", "fontawesome", "analytics", "math"]
-min_version = "0.41.0"
+min_version = "0.65.0"
 
 [author]
   name = "Yonnie Lu"

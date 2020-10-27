@@ -3,16 +3,29 @@
   <header class="mdc-top-app-bar mdc-top-app-bar--fixed">
     <div class="mdc-top-app-bar__row">
       <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-        <a class="material-icons mdc-top-app-bar__navigation-icon">menu</a>
+        {{ $url := .RelPermalink }}
+        {{ if eq (len (findRE "^/.+?/.+" $url)) 1 }}
+        <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button nav-back" aria-label="Back">arrow_back</button>
+        {{ else }}
+        <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">menu</button>
+        {{ end }}
         <span class="mdc-top-app-bar__title">
           {{ $url := .RelPermalink }}
           {{ $isRoot := eq $url "/" }}
-          {{ if $isRoot }}
-            {{ .Site.Params.Title }} - {{ .Site.Params.description }}
+          {{ if eq .Type "posts"}}
+            {{ .Title }}
+          {{ else if (eq .Type "categories") }}
+            {{ .Page.Title }}
+          {{ else if (eq .Type "tags") }}
+            {{ .Page.Title }}
           {{ else }}
-            {{ range .Site.Menus.main }}
-              {{ if eq $url .URL }}
-                {{ .Name }}
+            {{ if $isRoot }}
+              {{ .Site.Params.Title }} - {{ .Site.Params.description }}
+            {{ else }}
+              {{ range .Site.Menus.main }}
+                {{ if eq $url .URL }}
+                  {{ .Name }}
+                {{ end }}
               {{ end }}
             {{ end }}
           {{ end }}

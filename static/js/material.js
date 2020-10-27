@@ -11,6 +11,8 @@ const drawerCloser = document.querySelector('.drawer-close-icon')
 const topAppBar = mdc.topAppBar.MDCTopAppBar.attachTo(topAppBarElement);
 const drawer = mdc.drawer.MDCDrawer.attachTo(drawerElement);
 
+const back = document.querySelector('.nav-back');
+
 listEl.addEventListener('click', (event) => {
   drawer.open = false;
 });
@@ -22,6 +24,13 @@ topAppBar.listen('MDCTopAppBar:nav', () => {
 drawerCloser.addEventListener('click', (event) => {
   drawer.open = false;
 });
+
+if (back != null) {
+  back.addEventListener('click', (event) => {
+    console.log('this');
+    window.history.back();
+  });
+}
 
 
 // document.body.addEventListener('MDCDrawer:closed', () => {
