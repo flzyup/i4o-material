@@ -1,9 +1,5 @@
-// mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
-
-// const topAppBar = mdc.MDCTopAppBar.attachTo(document.querySelector('.mdc-top-app-bar'));
-// const tabBar = mdc.MDCTabBar.attachTo(document.querySelector('.mdc-tab-bar'));
-
-// console.log(topAppBar)
+// mdc.ripple.MDCRipple.attachTo(document.querySelector('.mdc-top-app-bar__navigation-icon'));
+// mdc.ripple.MDCRipple.attachTo(document.querySelector('.mdc-icon-button'));
 
 const topAppBarElement = document.querySelector('.mdc-top-app-bar');
 const drawerElement = document.querySelector('.mdc-drawer');

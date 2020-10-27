@@ -2,22 +2,30 @@
 
 {{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
 {{ range $paginator.Pages }}
-<div class="mdc-card element-card">
-    <div class="mdc-card__media mdc-theme--background">
+<div class="mdc-card">
+    <div class="mdc-card__media">
         <div class="">
-            <h1 class="mdc-typography--headline4 mdc-theme--text-primary-on-background"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
-            <h2 class="mdc-typography--headline6 mdc-theme--text-secondary-on-background">
-                <em class="far fa-calendar-alt"></em><span
-                    class="date">{{ .Date.Format .Site.Params.anatole.dateFormatWeek }}</span>
-                {{ with .Params.tags }}
-                {{- range $index, $el := . -}}
-                <a class="tag" href="{{ ( printf "tags/%s/" ( . | urlize ) ) | relLangURL }}">{{ . }}</a>
-                {{- end -}}
-                {{ end }}
-            </h2>
+            <h1 class="mdc-typography--headline5 mdc-theme--text-primary-on-background title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
+            <div class="mdc-typography--subtitle2 mdc-theme--text-secondary-on-background subtitle">
+                <span class="material-icons subtitle-icon">date_range</span>
+                <span class="date">{{ .Date.Format .Site.Params.anatole.dateFormatWeek }}</span>
+            </div>
         </div>
         <!-- p -->
         <p class="mdc-theme--text-primary-on-background">{{ .Summary }}</p>
+        <div class="mdc-typography--subtitle2 mdc-theme--text-secondary-on-background post-tags">
+            {{ with .Params.categories }}
+            {{- range $index, $el := . -}}
+            <a class="category" href="{{ ( printf "categories/%s/" ( . | urlize ) ) | relLangURL }}">{{ . }}</a>
+            {{- end -}}
+            {{ end }}
+
+            {{ with .Params.tags }}
+            {{- range $index, $el := . -}}
+            <a class="tag" href="{{ ( printf "tags/%s/" ( . | urlize ) ) | relLangURL }}">{{ . }}</a>
+            {{- end -}}
+            {{ end }}
+        </div>
     </div>
     
 
@@ -48,7 +56,7 @@
 </div> */}}
 </div>
 {{ end }}
-<div class="pagination">
+<div>
     {{- partial "pagination.html" . -}}
     {{/*  {{ template "_internal/pagination.html" . }} */}}
 </div>
