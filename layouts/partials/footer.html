@@ -2,6 +2,11 @@
     </div> <!-- mdc-top-app-bar--fixed-adjust -->
   </main><!-- #main-content -->
 </div> <!-- mdc-drawer-app-content -->
+<div class="footer-copyright">
+  <div class="">&copy; {{ if .Site.Params.since -}} {{ .Site.Params.since }}-{{- end }}{{ now.Format "2006"}} 
+      <a href="{{ .Site.BaseURL }}">{{ .Site.Params.title }}</a>
+  </div>
+</div>
 {{- partial "math.html" . -}}
 {{- template "_internal/google_analytics_async.html" . -}}
 
