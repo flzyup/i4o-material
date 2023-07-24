@@ -20,7 +20,7 @@
             {{ .Page.Title }}
           {{ else }}
             {{ if $isRoot }}
-              {{ .Site.Params.Title }} - {{ .Site.Params.description }}
+               {{ .Site.Params.Author }} - {{ .Site.Params.description }} (https://{{ .Site.Params.Title }})
             {{ else }}
               {{ range .Site.Menus.main }}
                 {{ if eq $url .URL }}

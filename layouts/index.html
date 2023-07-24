@@ -11,8 +11,16 @@
                 <span class="date">{{ .Date.Format .Site.Params.i4o.dateFormatWeek }}</span>
             </div>
         </div>
+        
         <!-- p -->
         <p class="mdc-theme--text-primary-on-background">{{ .Summary }}</p>
+        {{ if .Truncated }}
+        <!-- This <div> includes a read more link, but only if the summary is truncated... -->
+        <div>
+          <a href="{{ .RelPermalink }}">[Read More…]</a>
+        </div>
+        {{ end }}
+
         <div class="mdc-typography--subtitle2 mdc-theme--text-secondary-on-background post-tags">
             {{ with .Params.categories }}
             {{- range $index, $el := . -}}
